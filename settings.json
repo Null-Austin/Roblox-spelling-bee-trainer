@@ -6,9 +6,9 @@
     "Extreme":"extreme"
   },
   "word-links":{
-    "easy":"https://pastebin.com/raw/QbPdU7aH",
-    "normal":"https://pastebin.com/raw/HcjKyRZu",
-    "hard":"https://pastebin.com/raw/UHB7N0VF",
-    "extreme":"https://pastebin.com/raw/jG5c9i55"
+    "easy":"/words/easy.txt",
+    "normal":"/words/easy.txt",
+    "hard":"/words/easy.txt",
+    "extreme":"/words/easy.txt"
   }
 }
