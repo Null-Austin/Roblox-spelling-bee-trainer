@@ -92,6 +92,16 @@ function speak(word){
         );
     speechSynthesis.speak(utterance)
 }
+function getword(){
+    if (!current_difficulty.dataset.back || !ready) return;
+    isSet = true
+    let words = links[current_difficulty.dataset.back]
+    setup()
+    
+    word = words[Math.floor(Math.random() * words.length)];
+    speak(word)
+    error.style.display = "hidden"
+}
 document.addEventListener("DOMContentLoaded",e=>{
     // init variables used later from DOM
     btn_generate = document.querySelector("#generate");
@@ -103,13 +113,7 @@ document.addEventListener("DOMContentLoaded",e=>{
 
     // event listeners
     btn_generate.addEventListener("click",e=>{
-        if (!current_difficulty.dataset.back || !ready) return;
-        isSet = true
-        let words = links[current_difficulty.dataset.back]
-
-        setup()
-        word = words[Math.floor(Math.random() * words.length)];
-        speak(word)
+        getword()
     })
     btn_repeat.addEventListener("click",e=>{
         speak(word)
@@ -120,16 +124,21 @@ document.addEventListener("DOMContentLoaded",e=>{
         document.querySelector('#i_word').value = ""
         let s1 = String(_word).toLowerCase()
         let s2 = String(word).toLowerCase()
-        if (!s1) return
+        if (!s1) {
+            if (word) return;
+            return getword()
+        }
         console.log(s1,s2)
         if (s1 == s2 && word){
             var sound = new Audio("/assets/ding.mp3");
             sound.play()
             word = false;
-            error.style.display = "hidden"
         } else{
+            var sound = new Audio("/assets/wrong.mp3");
+            sound.play()
             error.style.display = "block"
             error.innerText = `Incorrect: ${s1} / ${s2}`
+            word = false
         }
     })
 
