@@ -1,3 +1,12 @@
+/* fonts :shrug: */
+@import url('https://fonts.googleapis.com/css2?family=TASA+Orbiter:wght@400..800&display=swap');
+
+.tasa-orbiter, body {
+  font-family: "TASA Orbiter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
 /*  
  * Drop down table:
  * https://www.w3schools.com/howto/howto_css_dropdown.asp, null-austin
@@ -83,7 +92,7 @@ h2{
  * Options menu: 
  * null-austin
  */
-div#options{
+#options{
     background-color: rgb(22, 22, 22);
     text-align: center;
     width: 77%;
@@ -92,7 +101,7 @@ div#options{
     border: 2px rgb(51, 51, 51) solid;
     border-radius: 5px;
 }
-div#options a.option{
+#options a.option{
     /* width: max-content; */
     margin: 0 auto;
     display: block;
@@ -102,8 +111,56 @@ div#options a.option{
     padding: 16px;
     font-size: 16px;
 }
-div#options a.option:hover{
+#options a.option:hover{
     color: rgb(255, 255, 255);
     text-decoration: underline;
     background-color: rgb(36, 112, 156);
+}
+/* Options */
+#options h2{
+    color: rgb(228, 228, 228);
+    padding: 0;
+    margin: 3px;
+}
+#options>span>a{
+    color: rgb(201, 201, 201);
+    margin: 52px;
+}
+#options #form {
+    margin-top: 16px;
+    padding: 12px;
+    background: none;
+    border-radius: 4px;
+    box-shadow: none;
+    width: 100%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+#options #form input,
+#options #form input[type="submit"] {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    border-radius: 3px;
+    font-size: 15px;
+    padding: 8px;
+}
+#options #form input {
+    border: 1px solid #222;
+    background: #181818;
+    color: #eee;
+}
+#options #form input[type="submit"] {
+    background: #287aaa;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+}
+#options #form input[type="submit"]:hover {
+    background: #236fa0;
 }
