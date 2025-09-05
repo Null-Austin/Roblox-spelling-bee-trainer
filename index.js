@@ -9,6 +9,7 @@ let btn_generate;
 let current_difficulty;
 let btn_repeat;
 let form;
+let error;
 
 // Other things
 let difficulties;
@@ -81,6 +82,7 @@ function setup(){
     }
 }
 function speak(word){
+    if (!word) return;
     let utterance = new SpeechSynthesisUtterance(word)
         utterance.voice = voices.find(v => 
             v.name.includes("Google US English") || 
@@ -97,6 +99,7 @@ document.addEventListener("DOMContentLoaded",e=>{
     current_difficulty = document.querySelector("button.dropbtn")
     btn_repeat = document.querySelector("#repeat-sound")
     form = document.querySelector("#form")
+    error = document.querySelector("#error")
 
     // event listeners
     btn_generate.addEventListener("click",e=>{
@@ -114,13 +117,19 @@ document.addEventListener("DOMContentLoaded",e=>{
     form.addEventListener("submit",e=>{
         e.preventDefault()
         let _word = document.querySelector('#i_word').value
+        document.querySelector('#i_word').value = ""
         let s1 = String(_word).toLowerCase()
         let s2 = String(word).toLowerCase()
+        if (!s1) return
         console.log(s1,s2)
         if (s1 == s2 && word){
             var sound = new Audio("/assets/ding.mp3");
             sound.play()
             word = false;
+            error.style.display = "hidden"
+        } else{
+            error.style.display = "block"
+            error.innerText = `Incorrect: ${s1} / ${s2}`
         }
     })
 

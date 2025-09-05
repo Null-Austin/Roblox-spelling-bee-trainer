@@ -182,3 +182,6 @@ h2{
 #generate{
     transition: .2s
 }
+#error{
+    color: rgb(230, 96, 96);
+}
