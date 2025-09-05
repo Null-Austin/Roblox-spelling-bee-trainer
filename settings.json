@@ -7,8 +7,8 @@
   },
   "word-links":{
     "easy":"/words/easy.txt",
-    "normal":"/words/easy.txt",
-    "hard":"/words/easy.txt",
-    "extreme":"/words/easy.txt"
+    "normal":"/words/normal.txt",
+    "hard":"/words/hard.txt",
+    "extreme":"/words/extreme.txt"
   }
 }
