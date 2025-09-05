@@ -93,6 +93,7 @@ function speak(word){
     speechSynthesis.speak(utterance)
 }
 function getword(){
+    error.style.display = "hidden"
     if (!current_difficulty.dataset.back || !ready) return;
     isSet = true
     let words = links[current_difficulty.dataset.back]
@@ -100,7 +101,6 @@ function getword(){
     
     word = words[Math.floor(Math.random() * words.length)];
     speak(word)
-    error.style.display = "hidden"
 }
 document.addEventListener("DOMContentLoaded",e=>{
     // init variables used later from DOM
@@ -122,14 +122,14 @@ document.addEventListener("DOMContentLoaded",e=>{
         e.preventDefault()
         let _word = document.querySelector('#i_word').value
         document.querySelector('#i_word').value = ""
-        let s1 = String(_word).toLowerCase()
-        let s2 = String(word).toLowerCase()
-        if (!s1) {
+        if (!String(_word).toLowerCase()) {
             if (word) return;
             return getword()
         }
-        console.log(s1,s2)
-        if (s1 == s2 && word){
+        let s1 = String(_word).toLowerCase()
+        s1 = s1.split("/")
+        let s2 = String(word).toLowerCase()
+        if (s1.includes(s2) && word){
             var sound = new Audio("/assets/ding.mp3");
             sound.play()
             word = false;
