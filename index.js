@@ -1,11 +1,14 @@
 let isSet = false;
-let word = true;
+let word;
 let ready = false;
+const voices = speechSynthesis.getVoices();
 
 // DOM
 let dropdown_menu;
 let btn_generate;
 let current_difficulty;
+let btn_repeat;
+let form;
 
 // Other things
 let difficulties;
@@ -73,14 +76,27 @@ function setup(){
     elements.forEach(e=>{
         e.classList.remove("hidden")
     })
-
-    document.querySelector(".big").classList.remove("big")
+    if (document.querySelector(".big")){
+        document.querySelector(".big").classList.remove("big")
+    }
+}
+function speak(word){
+    let utterance = new SpeechSynthesisUtterance(word)
+        utterance.voice = voices.find(v => 
+            v.name.includes("Google US English") || 
+            v.name.includes("Microsoft") || 
+            v.name.includes("Samantha") ||
+            v.name.includes("Zira")
+        );
+    speechSynthesis.speak(utterance)
 }
 document.addEventListener("DOMContentLoaded",e=>{
     // init variables used later from DOM
     btn_generate = document.querySelector("#generate");
     dropdown_menu = document.querySelector(".dropdown-options")
     current_difficulty = document.querySelector("button.dropbtn")
+    btn_repeat = document.querySelector("#repeat-sound")
+    form = document.querySelector("#form")
 
     // event listeners
     btn_generate.addEventListener("click",e=>{
@@ -89,7 +105,23 @@ document.addEventListener("DOMContentLoaded",e=>{
         let words = links[current_difficulty.dataset.back]
 
         setup()
-        let word = words[Math.floor(Math.random() * words.length)];
+        word = words[Math.floor(Math.random() * words.length)];
+        speak(word)
+    })
+    btn_repeat.addEventListener("click",e=>{
+        speak(word)
+    })
+    form.addEventListener("submit",e=>{
+        e.preventDefault()
+        let _word = document.querySelector('#i_word').value
+        let s1 = String(_word).toLowerCase()
+        let s2 = String(word).toLowerCase()
+        console.log(s1,s2)
+        if (s1 == s2 && word){
+            var sound = new Audio("/assets/ding.mp3");
+            sound.play()
+            word = false;
+        }
     })
 
     // networking

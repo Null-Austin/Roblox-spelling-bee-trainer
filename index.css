@@ -177,4 +177,8 @@ h2{
 #generate.big{
     height: 100%;
     font-size: 64px !important;
+    transition: .2s;
+}
+#generate{
+    transition: .2s
 }
