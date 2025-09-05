@@ -23,6 +23,7 @@
     position: relative;
     display: block;
     width: max-content;
+    z-index: 1001;
     /* background-color: black; */
     margin: 0 auto;
     margin-bottom: 20px;
@@ -33,6 +34,7 @@
     background-color: rgb(24, 24, 24);
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,.2);
+    z-index: 1000;
 }
 .dropdown-options a{
     color: rgb(255, 255, 255);
@@ -163,4 +165,16 @@ h2{
 }
 #options #form input[type="submit"]:hover {
     background: #236fa0;
+}
+/* Target Iconify SVGs specifically to keep them behind dropdown */
+.iconify, svg.iconify {
+    z-index: 1;
+    position: relative;
+}
+.hidden{
+    display: none !important;
+}
+#generate.big{
+    height: 100%;
+    font-size: 64px !important;
 }

@@ -6,6 +6,7 @@
     <title>RSBT</title>
     <link rel="stylesheet" href="index.css">
     <script src="//code.iconify.design/1/1.0.6/iconify.min.js"></script>
+    <script src="index.js"></script>
 </head>
 <body>
     <h1>Roblox Spelling Bee Trainer</h1>
@@ -15,21 +16,18 @@
             <div class="dropdown">
             <button class="dropbtn">Set Difficulty</button>
             <div class="dropdown-options">
-                <a href="#">Easyyyyy</a>
-                <a href="#">Normalll</a>
-                <a href="#">Harddddd</a>
-                <a href="#">Extremee</a>
+                <a href="#">Loading...</a>
             </div>
             </div>
         </span>
     </span>
     <div id="options">
-        <a href="#" class="option" id="generate">Generate new word!</a>
-        <h2>Type!</h2>
-        <span>
+        <a href="#" class="option big" id="generate">Generate new word!</a>
+        <h2 class="hidden">Type!</h2>
+        <span class="hidden">
             <a href="#" id="repeat-sound"><span class="iconify" data-icon="mdi-account-voice"></span> Repeat sound</a>
         </span>
-        <form action="" id="form">
+        <form action="" id="form" class="hidden">
             <input type="text" name="" id="i_word" placeholder="...">
             <input type="submit" value="Submit">
         </form>
